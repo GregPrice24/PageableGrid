@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		37802C241FC7980A007EF7C3 /* PageableGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 37802C221FC7980A007EF7C3 /* PageableGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37802C2B1FC79856007EF7C3 /* PageableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37802C2A1FC79856007EF7C3 /* PageableGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		37802C1F1FC7980A007EF7C3 /* PageableGrid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PageableGrid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37802C221FC7980A007EF7C3 /* PageableGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageableGrid.h; sourceTree = "<group>"; };
 		37802C231FC7980A007EF7C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37802C2A1FC79856007EF7C3 /* PageableGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageableGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				37802C221FC7980A007EF7C3 /* PageableGrid.h */,
+				37802C2A1FC79856007EF7C3 /* PageableGrid.swift */,
 				37802C231FC7980A007EF7C3 /* Info.plist */,
 			);
 			path = PageableGrid;
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					37802C1E1FC7980A007EF7C3 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37802C2B1FC79856007EF7C3 /* PageableGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +258,7 @@
 		37802C281FC7980A007EF7C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +272,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.iOS.PageableGrid;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -274,6 +281,7 @@
 		37802C291FC7980A007EF7C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
