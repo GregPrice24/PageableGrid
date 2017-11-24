@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 public protocol PageableGridViewDelegate {
-    func dynamicGrid(grid: PageableGridView, didMoveToSection section: Int)
-    func dynamicGrid(grid: PageableGridView, didMoveToRow row: Int)
+    func pageableGrid(grid: PageableGridView, didMoveToSection section: Int)
+    func pageableGrid(grid: PageableGridView, didMoveToRow row: Int)
 }
 
-public protocol DynamicGridViewItem {
+public protocol PageableGridViewItem {
     var name: String? { get }
     var description: String? { get }
     var images: [UIImage]? { get }
@@ -24,7 +24,7 @@ open class PageableGridView: UIView, UICollectionViewDelegate, UICollectionViewD
     
     public var delegate: PageableGridViewDelegate?
     
-    public private(set) var items = [DynamicGridViewItem]()
+    public private(set) var items = [PageableGridViewItem]()
     
     private var pageView: PageView!
     private var collectionView: UICollectionView!
@@ -69,7 +69,7 @@ open class PageableGridView: UIView, UICollectionViewDelegate, UICollectionViewD
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func add(_ item: DynamicGridViewItem) {
+    public func add(_ item: PageableGridViewItem) {
         items.append(item)
         if items.count == 1 {
             header.text = item.name
@@ -113,18 +113,18 @@ open class PageableGridView: UIView, UICollectionViewDelegate, UICollectionViewD
         let rowSnap = Int(collectionView.contentOffset.y / collectionView.frame.size.height)
         if row != rowSnap {
             row = rowSnap
-            dynamicGrid(grid: self, didMoveToRow: row)
+            pageableGrid(grid: self, didMoveToRow: row)
         } else {
             let sectionSnap = Int(collectionView.contentOffset.x / collectionView.frame.size.width)
             if section != sectionSnap {
                 section = sectionSnap
                 row = 0
-                dynamicGrid(grid: self, didMoveToSection: section)
+                pageableGrid(grid: self, didMoveToSection: section)
             }
         }
     }
     
-    public func dynamicGrid(grid: PageableGridView, didMoveToSection section: Int) {
+    public func pageableGrid(grid: PageableGridView, didMoveToSection section: Int) {
         let layout = collectionView.collectionViewLayout as! PageableGridViewLayout
         layout.row = row
         layout.section = section
@@ -132,14 +132,14 @@ open class PageableGridView: UIView, UICollectionViewDelegate, UICollectionViewD
         header.text = item.name
         pageView.pages = item.images!.count
         pageView.page = row
-        delegate?.dynamicGrid(grid: self, didMoveToSection: section)
+        delegate?.pageableGrid(grid: self, didMoveToSection: section)
     }
     
-    public func dynamicGrid(grid: PageableGridView, didMoveToRow row: Int) {
+    public func pageableGrid(grid: PageableGridView, didMoveToRow row: Int) {
         let layout = collectionView.collectionViewLayout as! PageableGridViewLayout
         layout.row = row
         pageView.page = row
-        delegate?.dynamicGrid(grid: self, didMoveToRow: row)
+        delegate?.pageableGrid(grid: self, didMoveToRow: row)
     }
 }
 
